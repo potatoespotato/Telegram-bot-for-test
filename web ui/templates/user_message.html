@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/static/style.css">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo List</title>
+</head>
+
+<body>
+		<h2>ToDo List:</h2>
+		<hr>
+	<dl><form id="some" method=post>
+
+				New task: <input form="some" formaction="/" formmethod=post type="text" name="new">
+				<input formaction="/" form="some" formmethod=post type="submit" name="ww" value="Add"></dl><br>
+	</form>
+		<hr>
+	<form>
+		<h3>Users:</h3>
+		{% for user in users %}
+		<div>{{user}}&nbsp;
+			{% endfor %}
+			<hr>
+			<h3>completed task:</h3>
+			{%for questd in donequests %}
+			<s>{{questd}}</s><br></a>
+			{% endfor %}
+			<hr>
+			<h3>Uncompleted task:</h3>
+			<dl>
+				{%for i in quests %}
+				<form id="done" method=post>
+					<dt>
+					<dd>{{i}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input formaction="/" form="done" formmethod=post type="submit" name="done" value={{i}}></dd>
+					<br>
+				</form>
+				{% endfor %}
+				</dt></dl>
+		</div>
+	</form>
+</body>
+
+</html>
