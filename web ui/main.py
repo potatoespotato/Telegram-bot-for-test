@@ -6,7 +6,7 @@ import pymysql.cursors
 app = Flask(__name__)
 
 
-connection = pymysql.connect(host='localhost',
+connection = pymysql.connect(host='192.168.1.3',
                              user='root',
                              password='1133',
                              db='tododb',
