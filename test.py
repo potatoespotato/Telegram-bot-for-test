@@ -3,7 +3,7 @@ import config
 import pymysql.cursors
 import telebot
 
-connection = pymysql.connect(host='192.168.1.3',
+connection = pymysql.connect(host='localhost',
 							 user='root',
 							 password='1133',
 							 db='tododb',

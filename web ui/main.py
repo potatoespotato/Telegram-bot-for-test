@@ -6,7 +6,7 @@ import pymysql.cursors
 app = Flask(__name__)
 
 
-connection = pymysql.connect(host='192.168.1.3',
+connection = pymysql.connect(host='localhost',
                              user='root',
                              password='1133',
                              db='tododb',
@@ -62,17 +62,20 @@ def all_users():
                     pass
     if request.method == 'POST':
         try:
-            if request.form['done'].split('') != '':
+            if request.form['done'] != '':
                 done = request.form['done']
+                welldone = ('%{}%'.format(done))
                 print(done)
                 with connection.cursor() as cursor:
-                    sql = "UPDATE quests SET done=(%s) WHERE messages=%s"
-                    cursor.execute(sql, (1, done))
+                    sql = "UPDATE quests SET done=(%s) WHERE messages LIKE  %s "
+                    cursor.execute(sql, (1, welldone))
+                    print(sql)
                     connection.commit()
+                    print('quest done')
         except:
             pass
         try:
-            if request.method is not None and request.form['new'].split('') != '':
+            if request.method is not None and request.form['new'] != '':
                 new = request.form['new']
                 print(new)
                 with connection.cursor() as cursor:
